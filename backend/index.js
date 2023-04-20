@@ -49,6 +49,14 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(cookieParser());
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://health-bot-app.onrender.com');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
+  
 // ***** Setting up middlewares ENDS ***** //
 
 
