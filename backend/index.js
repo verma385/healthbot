@@ -663,7 +663,7 @@ app.post("/prediction", (req, res)=>{
     console.log(symptoms);
     symptoms_formatted = [];
     symptoms.map(symptom => {
-        var symptom_formatted = symptom.replaceAll(" ", "_");
+        var symptom_formatted = String(symptom).replaceAll(" ", "_");
         symptom_formatted = symptom_formatted.toLowerCase();
         symptoms_formatted.push(symptom_formatted);
     });
