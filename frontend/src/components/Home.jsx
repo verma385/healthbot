@@ -11,7 +11,7 @@ const User = () => {
   useEffect(()=>{
     Axios({
       method: "GET",
-      withCredentials: true,
+      withCredentials: false,
       url: config.BACKEND_URI + '/auth/user',
       data: {
         

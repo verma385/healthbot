@@ -32,12 +32,12 @@ function Navbar() {
     // }, []);
     useEffect(() => {
       // Make a GET request to the user API endpoint on your Node.js backend
-      axios.get(config.BACKEND_URI + '/auth/user')
+      axios.get(config.BACKEND_URI + '/auth/user', { withCredentials: true })
         .then(response => {
           // Handle the successful response and extract the user information
           const user = response.data;
           setUser(user);
-          console.log(response.data);
+          console.log("dat ", response.data);
         })
         .catch(error => {
           // Handle the error response (e.g., if the user is not authenticated)
