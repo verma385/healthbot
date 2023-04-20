@@ -47,8 +47,8 @@ const UserProfile = () => {
     });
   }, [user]);
 
-  if(!user.username || user.username=="") return <Unauthorized />
-  else
+  // if(!user.username || user.username=="") return <Unauthorized />
+  // else
   return (
 
     // <div>
