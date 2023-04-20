@@ -213,6 +213,7 @@ function authenticationMiddleware () {
 
 // GET LOGGED IN USER //
 app.get("/auth/user", function(req, res){
+    console.log("req ", req.user);
     if(!req.user){
         res.send({});
         return;
@@ -226,6 +227,7 @@ app.get("/auth/user", function(req, res){
     res.send(user);
 });
 app.post("/auth/user", function(req, res){
+    console.log("req ", req.user);
     if(!req.user){
         res.send({});
         return;
