@@ -657,7 +657,10 @@ app.get("/o", (req, res)=>{
 var flask_uri = process.env.FLASK_URI;
 
 app.post("/prediction", (req, res)=>{
+    console.log(flask_uri);
+    
     var symptoms = req.body.symptoms;
+    console.log(symptoms);
     symptoms_formatted = [];
     symptoms.map(symptom => {
         var symptom_formatted = symptom.replaceAll(" ", "_");
