@@ -58,6 +58,7 @@ function Login(){
         (res)=>{
             setMessage({success : res.data.success, message: res.data.message});
             setIsVisible(true);
+            console.log("long ", res.data);
             if(res.data.success){
              
                 Axios({
@@ -69,6 +70,7 @@ function Login(){
                     },
                   }).then((res) => {
                     setUser({...res.data});
+                    console.log("long in ", res.data);
                   });
             }
         }
