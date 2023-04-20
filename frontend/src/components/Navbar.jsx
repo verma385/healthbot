@@ -26,6 +26,7 @@ function Navbar() {
         },
       }).then((res) => {
         setUser(res.data);
+        console.log("nav ", res.data);
       });
     }, []);
   return (
