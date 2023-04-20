@@ -10,8 +10,8 @@ const User = () => {
  
   useEffect(()=>{
     Axios({
-      method: "POST",
-      withCredentials: false,
+      method: "GET",
+      withCredentials: true,
       url: config.BACKEND_URI + '/auth/user',
       data: {
         
@@ -19,6 +19,7 @@ const User = () => {
     }).then((res) => {
       setUser(res.data);
       console.log(config);
+      console.log(res.data);
     });
   }, []);
 
