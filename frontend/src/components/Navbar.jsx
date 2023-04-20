@@ -3,6 +3,7 @@ import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import { useContext, useEffect} from "react";
 import { UserContext } from "./UserContext";
 import Axios from "axios";
+import axios from "axios";
 import "./navbar.css"
 import ProfilePhoto from "./ProfilePhoto";
 import config from "../public/config.json";
@@ -16,19 +17,35 @@ function Navbar() {
       // marginTop:"10%"
       // backgroundColor: "#B90136"
     }
-    useEffect(()=>{
-      Axios({
-        method: "POST",
-        withCredentials: false,
-        url: config.BACKEND_URI + '/auth/user',
-        data: {
+    // useEffect(()=>{
+    //   Axios({
+    //     method: "POST",
+    //     withCredentials: false,
+    //     url: config.BACKEND_URI + '/auth/user',
+    //     data: {
           
-        },
-      }).then((res) => {
-        setUser(res.data);
-        console.log("nav ", res.data);
-      });
+    //     },
+    //   }).then((res) => {
+    //     setUser({...res.data});
+    //     console.log("nav ", res.data);
+    //   });
+    // }, []);
+    useEffect(() => {
+      // Make a GET request to the user API endpoint on your Node.js backend
+      axios.get(config.BACKEND_URI + '/auth/user')
+        .then(response => {
+          // Handle the successful response and extract the user information
+          const user = response.data;
+          setUser(user);
+          console.log(response.data);
+        })
+        .catch(error => {
+          // Handle the error response (e.g., if the user is not authenticated)
+          console.error(error);
+        });
     }, []);
+
+
   return (
     <div>
     <nav className="navbar navbar-expand-lg navbar-light bg-light" >
