@@ -17,33 +17,20 @@ function Navbar() {
       // marginTop:"10%"
       // backgroundColor: "#B90136"
     }
-    // useEffect(()=>{
-    //   Axios({
-    //     method: "POST",
-    //     withCredentials: false,
-    //     url: config.BACKEND_URI + '/auth/user',
-    //     data: {
+    useEffect(()=>{
+      Axios({
+        method: "POST",
+        withCredentials: false,
+        url: config.BACKEND_URI + '/auth/user',
+        data: {
           
-    //     },
-    //   }).then((res) => {
-    //     setUser({...res.data});
-    //     console.log("nav ", res.data);
-    //   });
-    // }, []);
-    useEffect(() => {
-      // Make a GET request to the user API endpoint on your Node.js backend
-      axios.get(config.BACKEND_URI + '/auth/user', { withCredentials: true })
-        .then(response => {
-          // Handle the successful response and extract the user information
-          const user = response.data;
-          setUser(user);
-          console.log("dat ", response.data);
-        })
-        .catch(error => {
-          // Handle the error response (e.g., if the user is not authenticated)
-          console.error(error);
-        });
+        },
+      }).then((res) => {
+        setUser({...res.data});
+        console.log("nav ", res.data);
+      });
     }, []);
+    
 
 
   return (
