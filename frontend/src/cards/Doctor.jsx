@@ -18,8 +18,8 @@ const Doctor = ({username, name, email, speciality, clinic, city, state}) => {
   useEffect(()=>{
     Axios({
       method: "POST",
-      withCredentials: true,
-      url: '/auth/user',
+      withCredentials: false,
+      url: config.BACKEND_URI +'/auth/user',
       data: {
         
       },

@@ -59,8 +59,8 @@ function Signup_new(){
       
         Axios({
             method:"POST",
-            withCredentials:true,
-            url:'/auth/signup',
+            withCredentials: false,
+            url: config.BACKEND_URI + '/auth/signup',
             data: { 
                 name:name,
                 username:username,

@@ -10,8 +10,8 @@ const Message = ({message, read, time, align}) => {
   useEffect(()=>{
     Axios({
       method: "POST",
-      withCredentials: true,
-      url: '/auth/user',
+      withCredentials: false,
+      url: config.BACKEND_URI +'/auth/user',
       data: {
         
       },
