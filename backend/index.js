@@ -49,12 +49,12 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(cookieParser());
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Origin', req.headers.origin);
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+//   });
   
 // ***** Setting up middlewares ENDS ***** //
 
@@ -73,6 +73,7 @@ app.use(function(req, res, next) {
 // const conn = mongoose.createConnection(mongourl);
 // const mongourl = "mongodb://localhost:27017/healthcare"
 const mongourl = process.env.DATABASE_URL;
+console.log(mongourl);
 
 mongoose.connect(mongourl, {
     useNewUrlParser: true,
@@ -220,11 +221,11 @@ function authenticationMiddleware () {
 
 // GET LOGGED IN USER //
 app.get("/auth/user", function(req, res){
-    console.log("req ", req.user);
-    // if(!req.user){
-    //     res.send({});
-    //     return;
-    // }
+ 
+    if(!req.user){
+        res.send({});
+        return;
+    }
     var user = req.user._doc;
     var userRecordAccess = req.session.userRecordAccess;
     if(!userRecordAccess){
@@ -234,7 +235,6 @@ app.get("/auth/user", function(req, res){
     res.send(user);
 });
 app.post("/auth/user", function(req, res){
-    console.log("req ", req.user);
     if(!req.user){
         res.send({});
         return;
